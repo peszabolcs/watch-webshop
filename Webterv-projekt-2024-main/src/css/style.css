@@ -1,0 +1,806 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+:root {
+  --header-margin: 100px;
+  --footer-height: 60px;
+  --nav-text-menu-width: 800px;
+}
+
+/* Reszponzivitas */
+@media only screen and (max-width: 1050px) {
+  :root {
+    --header-margin: 160px !important;
+  }
+
+  .products-container {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+
+  .product-card {
+    margin: auto !important;
+    min-width: 220px !important;
+  }
+
+  .admin-interface {
+    flex-direction: column !important;
+  }
+
+  .profile.content {
+    grid-template-columns: 1fr !important;
+    gap: 30px;
+  }
+
+  .profile-container,
+  .profile-orders-container {
+    margin: auto !important;
+  }
+}
+
+/* Univerzális */
+.card {
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.content {
+  min-height: calc(100vh - var(--header-margin) - var(--footer-height));
+}
+
+.link {
+  text-decoration: none;
+  color: #36454f;
+  transition: 0.35s ease;
+}
+
+.link:hover {
+  color: royalblue;
+}
+
+.button-blue {
+  padding: 10px;
+  margin: 0 auto;
+  box-sizing: border-box;
+  background-color: cornflowerblue;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 40px;
+  font-weight: 600;
+  transition: 0.2s ease;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.button-blue:hover {
+  background-color: royalblue;
+}
+
+/* Body */
+html {
+  min-height: 100vh;
+}
+
+body {
+  /* navbar position fixed miatt margin kell minden oldal tetejére */
+  margin: var(--header-margin) 0 0 0;
+  background-color: #d8deec;
+  background-image: url("../img/wave.webp");
+  background-repeat: no-repeat;
+  background-position-y: -50px;
+  font-family: "Poppins", sans-serif;
+  min-height: calc(100vh - var(--header-margin)) !important;
+}
+
+/* Navbar */
+#navigacio {
+  background-color: cornflowerblue;
+  position: fixed;
+  top: 4px;
+  left: 1%;
+  width: 98%;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  gap: calc((100% - 76px - var(--nav-text-menu-width)) / 2);
+  border-radius: 40px;
+}
+
+#navigacio .pages {
+  display: flex;
+  align-items: center;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  max-width: var(--nav-text-menu-width);
+  gap: 30px;
+}
+
+#navigacio .text-menu li {
+  float: left;
+  margin: 0 4px;
+  list-style: none;
+}
+
+#navigacio .icon-menu ul li {
+  list-style: none;
+  float: left;
+  margin: 0 4px;
+}
+
+#navigacio li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+  border-radius: 40px;
+  font-size: 14px;
+}
+
+#navigacio .text-menu li a:hover,
+#navigacio .text-menu li a.active {
+  background-color: royalblue;
+}
+
+#navigacio #logo {
+  max-width: 70px;
+  margin-left: 6px;
+}
+
+#navigacio .icon-menu .nav-icon {
+  width: 30px;
+  height: 30px;
+  opacity: 0.8;
+  transition: 0.2s ease;
+  margin-top: 5px;
+}
+
+#navigacio .icon-menu .nav-icon:hover,
+#navigacio .icon-menu .active .nav-icon {
+  opacity: 1;
+}
+
+#navigacio #icon1 a,
+#navigacio #icon2 a {
+  height: 100%;
+  padding: 0;
+}
+
+#navigacio #user_active_h, #navigacio .user_active_h  {
+  display: none;
+}
+
+#navigacio #user_active_l {
+  display: none;
+}
+
+#navigacio #admin_nonactive {
+  display: none;
+}
+
+/* Login oldal */
+.login.content {
+  display: grid;
+  height: 670px;
+}
+
+/* Login form */
+.login-container {
+  background: #fff;
+  max-width: 400px;
+  margin: auto;
+  height: 500px;
+  display: flex;
+  border-radius: 40px;
+  padding: 0 40px;
+}
+
+.login-container h2 {
+  text-align: center;
+  align-self: center;
+}
+
+#login-form {
+  max-width: 300px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-rows: 30% 20% 20% 12% 10%;
+}
+
+#login-form label {
+  padding-left: 20px;
+  font-weight: 500;
+}
+
+#login-form input[type="text"],
+#login-form input[type="password"] {
+  width: 100%;
+  padding: 20px;
+  margin: 6px 0 10px 0;
+  box-sizing: border-box;
+  border: none;
+  border-radius: 40px;
+}
+
+#login-form input[type="text"]:focus-visible,
+#login-form input[type="password"]:focus-visible {
+  outline-width: 2px;
+  outline-color: royalblue;
+}
+
+.submit-button {
+  width: 200px;
+}
+
+#login-form input[type="submit"]:hover {
+  background-color: royalblue;
+}
+
+#login-form .input-mezo.extra {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-height: 25px;
+  max-width: 260px;
+  margin: 0 20px;
+}
+
+/* Regisztrációs oldal */
+.register.content {
+  display: grid;
+  height: 670px;
+}
+
+/* Regisztrációs form */
+.register-container {
+  background: #fff;
+  max-width: 500px;
+  margin: auto;
+  height: 400px;
+  display: flex;
+  border-radius: 40px;
+  padding: 0 40px;
+}
+
+.register-container h2 {
+  text-align: center;
+  align-self: center;
+  grid-column: span 2;
+}
+
+#register-form {
+  margin: 0 auto;
+  width: 100%;
+  display: grid;
+  grid-template-rows: auto auto auto auto auto;
+  grid-template-columns: repeat(2, 1fr);
+  grid-auto-rows: auto;
+  gap: 10px;
+}
+
+#register-form label {
+  padding-left: 20px;
+  font-weight: 500;
+}
+
+#register-form input[type="text"],
+#register-form input[type="password"],
+#register-form input[type="email"] {
+  width: 100%;
+  padding: 20px;
+  margin: 6px 0 10px 0;
+  box-sizing: border-box;
+  border: none;
+  border-radius: 40px;
+}
+
+#register-form input[type="text"]:focus-visible,
+#register-form input[type="password"]:focus-visible,
+#register-form input[type="email"]:focus-visible {
+  outline-width: 2px;
+  outline-color: royalblue;
+}
+
+#register-form .submit-button {
+  grid-column: span 2;
+  transition: 0.2s ease;
+}
+
+#register-form input[type="submit"]:hover {
+  background-color: royalblue;
+}
+
+#register-form .input-mezo.extra {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-height: 25px;
+  max-width: 100%;
+  margin: 0 20px;
+  grid-column: span 2;
+}
+
+#register-form .input-mezo.extra a {
+  text-decoration: none;
+  color: #36454f;
+}
+
+/* Profil oldal */
+.profile.content {
+  display: grid;
+  grid-template-columns: 1.5fr 2fr;
+}
+
+.profile-container img {
+  width: 96px;
+  height: 96px;
+  border: 4px solid royalblue;
+  border-radius: 96px;
+}
+
+.profile-container {
+  background: #fff;
+  max-width: 600px;
+  min-height: 450px;
+  max-height: 80%;
+  margin: auto 5% auto auto;
+  border-radius: 40px;
+  padding: 0 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.profile-container .name {
+  margin-bottom: 0;
+}
+
+.profile-container #editForm input {
+  display: block;
+}
+
+.profile-orders-container {
+  background: #fff;
+  max-width: 800px;
+  max-height: 90%;
+  margin: auto auto auto 5%;
+  border-radius: 40px;
+  padding: 0 40px 50px;
+}
+
+.profile-orders-container h2 {
+  text-align: center;
+}
+
+.profile-orders-container table {
+  min-width: 500px;
+  border-spacing: 0;
+  text-align: center;
+  overflow: hidden;
+}
+
+.profile-orders-container thead th:first-of-type {
+  border-top-left-radius: 20px;
+}
+
+.profile-orders-container thead th:last-of-type {
+  border-top-right-radius: 20px;
+}
+
+.profile-orders-container tr:last-of-type td:first-of-type {
+  border-bottom-left-radius: 20px;
+}
+
+.profile-orders-container tr:last-of-type td:last-of-type {
+  border-bottom-right-radius: 20px;
+}
+
+.profile-orders-container thead {
+  background: rgba(100, 149, 237, 1);
+  color: #fff;
+}
+
+.profile-orders-container td {
+  background: rgba(100, 149, 237, 0.6);
+  color: #fff;
+  font-weight: 600;
+  font-size: 13px;
+  min-width: 100px;
+}
+
+.profile-orders-container td:not(.profile-orders-container tr:last-of-type td) {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.8);
+}
+
+.profile-orders-container td.tetelek {
+  text-align: left;
+}
+
+/* footer */
+footer {
+  background: cornflowerblue;
+  color: #fff;
+  width: 100%;
+  position: relative;
+  left: 0;
+  bottom: 0;
+  text-align: center;
+  font-size: 13px;
+  font-weight: 600;
+  max-height: 60px;
+}
+
+footer p {
+  margin: 0;
+  padding: 20px 0;
+}
+
+/* Product oldal */
+
+.products-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 20px;
+  max-width: 90%;
+  margin: auto;
+}
+
+/* Product cards */
+.product-card {
+  background: #fff;
+  max-width: 300px;
+  margin: 20px;
+  border-radius: 40px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.product-card form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.product-card img:not(.tocart img) {
+  width: 150px;
+  height: 150px;
+  border: 4px solid royalblue;
+  border-radius: 150px;
+  margin-bottom: 20px;
+  aspect-ratio: 4/3;
+  object-fit: contain;
+}
+
+.product-card .name {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  text-align: center;
+  height: 60px;
+}
+
+.product-card .price {
+  text-align: center;
+  font-size: 16px;
+  color: royalblue;
+  margin-bottom: 10px;
+  font-weight: 500;
+}
+
+.tocart {
+  margin-top: auto;
+}
+
+.tocart button {
+  padding: 10px 12px 6px;
+}
+
+.tocart button img {
+  width: 25px;
+}
+
+.tocart button:hover {
+  background-color: royalblue;
+  transition: background-color 0.3s ease;
+}
+
+.products-header h2 {
+  text-align: center;
+}
+
+/* Kezdőlap oldal */
+
+.homepage {
+  text-align: center;
+}
+
+.homepage h1 {
+  font-size: 36px;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+.homepage p {
+  font-size: 18px;
+  margin-top: 10px;
+}
+
+.homepage a {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: cornflowerblue;
+  color: white;
+  border-radius: 30px;
+  text-decoration: none;
+}
+
+.homepage a:hover {
+  background-color: royalblue;
+  transition: background-color 0.3s ease;
+}
+
+.home-login {
+  margin: 70px 0;
+}
+
+.home-login .login-container {
+  max-width: 300px;
+  height: 480px;
+}
+
+.home-login h3 {
+  text-align: center;
+}
+
+.image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 90%;
+  margin: 2% auto;
+}
+
+.image-container img {
+  width: 90%;
+  aspect-ratio: 4/3;
+  object-fit: contain;
+  border-radius: 200px;
+}
+
+.homepage:last-child {
+  margin: 20px auto 50px auto;
+}
+
+.top-products h2 {
+  text-align: center;
+}
+
+.top-products .products-container {
+  grid-template-rows: 1fr;
+}
+
+/* Kosár oldal */
+
+.container .cart {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  min-height: calc(100vh - 160px);
+}
+
+.container .table-div {
+  background: #fff;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  max-width: 800px;
+  margin: 20px 20px 0 20px;
+  border-radius: 40px;
+  padding: 20px;
+}
+
+.container .cart .order {
+  border-spacing: 0;
+}
+
+.container .order thead {
+  background: rgba(100, 149, 237, 1);
+  border-radius: 16px;
+  color: #fff;
+  font-size: 20px;
+}
+
+.container .order th {
+  padding: 5px 10px;
+  min-width: 150px;
+}
+
+.container .order tbody,
+.container .order tr {
+  width: 100%;
+}
+
+.container .order tbody td {
+  width: 25%;
+  text-align: center;
+  padding: 10px;
+}
+
+.container .order td {
+  background: rgba(100, 149, 237, 0.6);
+  color: #fff;
+  font-weight: 600;
+  font-size: 13px;
+}
+
+.container .sum {
+  margin: 20px auto 5px auto;
+  color: rgba(100, 149, 237, 1);
+  font-weight: 500;
+}
+
+.container .order tfoot td {
+  background: rgba(100, 149, 237, 1);
+  color: #fff;
+  font-weight: 600;
+  font-size: 16px;
+  padding: 10px 20px;
+  border-radius: 16px;
+}
+
+.container .order thead th:first-of-type {
+  border-top-left-radius: 20px;
+}
+
+.container .order thead th:last-of-type {
+  border-top-right-radius: 20px;
+}
+
+.container .order tr:last-of-type td:first-of-type {
+  border-bottom-left-radius: 20px;
+}
+
+.container .order tr:last-of-type td:last-of-type {
+  border-bottom-right-radius: 20px;
+}
+
+.container .order td:not(.profile-orders-container tr:last-of-type td) {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.8);
+}
+
+.navbuttons {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 10px 20px;
+}
+
+.navbuttons a,
+.navbuttons form button {
+  box-sizing: border-box;
+  padding: 20px 20px;
+  font-size: 16px;
+  margin: 30px 10px;
+  text-decoration: none;
+  display: inline-block;
+  width: 150px;
+  text-align: center;
+  line-height: 1.5;
+}
+
+/* admin felület */
+.admin-message {
+  text-align: center;
+  width: 100%;
+  display: block;
+}
+
+.admin-interface {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: row;
+  min-height: calc(100vh - 180px);
+}
+
+.user-management,
+.product-management {
+  background: #fff;
+  max-width: 600px;
+  min-width: 450px;
+  margin: 20px;
+  border-radius: 40px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.admin-interface label {
+  padding: 10px;
+  font-weight: 500;
+}
+
+.admin-interface button {
+  padding: 10px 20px;
+  font-size: 16px;
+  margin: 20px 10px;
+}
+
+.admin-interface input[type="text"],
+.admin-interface input[type="password"],
+.admin-interface input[type="number"],
+.admin-interface input[type="email"],
+.admin-interface input[type="file"]
+{
+  width: 100%;
+  padding: 20px;
+  margin: 6px 0 10px 0;
+  box-sizing: border-box;
+  border: none;
+  border-radius: 40px;
+}
+
+.admin-interface input[type="text"]:focus-visible,
+.admin-interface input[type="password"]:focus-visible,
+.admin-interface input[type="number"]:focus-visible {
+  outline-width: 2px;
+  outline-color: royalblue;
+}
+
+.admin-interface button:hover {
+  background-color: royalblue;
+  transition: background-color 0.3s ease;
+}
+
+.admin-interface form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.admin-interface input[type="file"] {
+  text-align-last: center;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.admin-interface input[type="file"]::-webkit-file-upload-button {
+  display: block;
+  padding: 10px;
+  margin: 0 auto 15px auto;
+  box-sizing: border-box;
+  background-color: cornflowerblue;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 40px;
+  font-weight: 600;
+  transition: 0.2s ease !important;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  font-size: 16px;
+}
+
+input[type="file"]:hover::-webkit-file-upload-button,
+input[type="file"]:focus::-webkit-file-upload-button {
+  background-color: royalblue;
+}
+
+#imagePreview {
+  display: none;
+  width: 200px;
+  height: 200px;
+  border: 4px solid royalblue;
+  border-radius: 96px;
+}
